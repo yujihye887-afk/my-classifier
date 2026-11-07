@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT 요청 분류기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>사내 IT 요청 분류기</h1>
+    <p class="sub">규칙 + AI(Gemini)</p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" id="t-classify" aria-selected="true" aria-controls="tab-classify">분류</button>
+    <button type="button" role="tab" id="t-score" aria-selected="false" aria-controls="tab-score">채점</button>
+  </div>
+
+  <p id="error" class="error" hidden></p>
+
+  <main>
+    <section id="tab-classify" role="tabpanel" aria-labelledby="t-classify">
+      <form id="form">
+        <label for="text">요청 문장 한 줄</label>
+        <textarea id="text" rows="3" placeholder="예: 로그인이 안 돼요"></textarea>
+        <button type="submit" class="primary">분류</button>
+      </form>
+
+      <dl id="result" class="result" hidden>
+        <dt>가린 문장</dt><dd id="r-masked"></dd>
+        <dt>칸</dt><dd id="r-category" class="big"></dd>
+        <dt>긴급도</dt><dd id="r-urgency" class="big"></dd>
+        <dt>이유</dt><dd id="r-reason"></dd>
+        <dt>방식</dt><dd id="r-how"></dd>
+      </dl>
+
+      <details id="words">
+        <summary>규칙이 쓰는 낱말 (연습 문장에서 뽑음)</summary>
+        <div id="words-body"></div>
+      </details>
+    </section>
+
+    <section id="tab-score" role="tabpanel" aria-labelledby="t-score" hidden>
+      <button type="button" id="score-btn" class="primary">규칙으로 채점</button>
+      <button type="button" id="ai-score-btn" class="primary">AI로 채점</button>
+      <p id="ai-progress" class="sub" role="status" hidden></p>
+      <div id="ai-out"></div>
+      <div id="score-out"></div>
+    </section>
+  </main>
+
+  <script src="mask.js"></script>
+  <script src="rules.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

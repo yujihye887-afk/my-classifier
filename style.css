@@ -1,0 +1,132 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1c1f24;
+  --muted: #5d6470;
+  --line: #d9dde3;
+  --card: #f5f6f8;
+  --accent: #2456c9;
+  --accent-fg: #ffffff;
+  --bad: #b3261e;
+  --good: #1b6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181c;
+    --fg: #e8eaee;
+    --muted: #a0a7b3;
+    --line: #333841;
+    --card: #1f2227;
+    --accent: #7aa2ff;
+    --accent-fg: #101216;
+    --bad: #ff8a80;
+    --good: #7fd6a0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 16px 40px;
+  max-width: 640px;
+  margin-inline: auto;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+header { padding: 20px 0 8px; }
+h1 { font-size: 1.3rem; margin: 0; }
+.sub { margin: 2px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.tabs { display: flex; gap: 8px; margin: 12px 0 16px; }
+.tabs button {
+  flex: 1;
+  padding: 10px 0;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--fg);
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+.tabs button[aria-selected="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+}
+
+label { display: block; font-weight: 600; margin-bottom: 6px; }
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+button.primary {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.result {
+  margin: 16px 0;
+  padding: 12px 14px;
+  background: var(--card);
+  border-radius: 8px;
+}
+.result dt { color: var(--muted); font-size: 0.85rem; margin-top: 10px; }
+.result dt:first-child { margin-top: 0; }
+.result dd { margin: 2px 0 0; }
+.result dd.big { font-size: 1.15rem; font-weight: 700; }
+
+details { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 12px; }
+summary { cursor: pointer; font-weight: 600; }
+.group { margin: 14px 0; }
+.group h3 { margin: 0 0 4px; font-size: 1rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 6px; padding: 0; list-style: none; }
+.chips li { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; font-size: 0.85rem; }
+.examples { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.85rem; }
+
+.error { color: var(--bad); background: var(--card); border-radius: 8px; padding: 10px 12px; }
+
+.summary { margin: 16px 0; padding: 12px 14px; background: var(--card); border-radius: 8px; }
+.summary p { margin: 4px 0; }
+.summary .cond { color: var(--muted); font-size: 0.85rem; margin-top: 10px; }
+.wrong-list { list-style: none; margin: 0; padding: 0; }
+.wrong-list li { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+.wrong-list .id { color: var(--muted); font-size: 0.85rem; }
+.wrong-list .diff { margin: 4px 0 0; font-size: 0.9rem; }
+.bad { color: var(--bad); font-weight: 600; }
+.ok { color: var(--good); }
+h2 { font-size: 1.05rem; margin: 20px 0 8px; }
+
+button:disabled { opacity: 0.55; cursor: progress; }
+table.compare { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.95rem; }
+table.compare th, table.compare td { border: 1px solid var(--line); padding: 6px 8px; text-align: right; }
+table.compare th:first-child, table.compare td:first-child { text-align: left; }
+table.compare thead th { background: var(--card); }
+.dl-btn { display: block; width: 100%; padding: 10px; margin-top: 8px; border: 1px solid var(--accent); border-radius: 8px; background: transparent; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; }
